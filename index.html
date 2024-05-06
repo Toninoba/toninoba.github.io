@@ -1,19 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klinikum Ultraschallgeräte Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        header nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+			      text-align: center; 
+        }
+        
+        header nav ul li {
+            display: inline-block; /* Ändere float: left; zu display: inline-block; */
+            vertical-align: middle; /* Zentriere vertikal */
+        } 
+        
+        header nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        header nav ul li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+		
+		.header-content {
+			display: flex;
+			justify-content: space-between; /* Elemente werden auf beiden Seiten des Containers platziert */
+			align-items: flex-start; /* Elemente werden am oberen Rand des Containers ausgerichtet */
+		}
+
+		.left-container,
+		.right-container {
+			flex: 1;
+		}
+
+		.left-container {
+			margin-right: 20px; /* Abstand zwischen den Containern */
+		}
+
+		.right-container {
+			border: 1px solid #ccc; /* Beispielrahmen für den rechten Container */
+			padding: 100px 10px 250px 10px;
+			margin-top: 80px;
+		}
+
+	.right-container h2 {
+		margin-top: 0; /* Entfernt den oberen Abstand für die Überschrift */
+	}
+
+    </style>
 </head>
 <body>
+    <header>
+        <center><h1>Navigationsplattform für Klinikumseffizienz</h1><center>
+        <nav>
+            <ul>
+				<li><a href="index.html">Homepage</a></li>
+                <li><a href="Availability.html">Verfügbarkeit prüfen</a></li>
+                <li><a href="Room.html">Geräte nach Raum suchen</a></li>
+            </ul>
+        </nav>
+    </header>
+	
+	
 
-<h1>My Website</h1>
-<p>A website created by us.</p>
+	
+	<div class="header-content">
+        <div class="left-container">
+            <h2 style="margin-left:250px;">Klinikumplan</h2>
+            <img src="Siloah.png" alt="Siloah Logo" style="max-width:700px;"> <!-- Füge dieses Bild ein -->
+        </div>
+        <div class="right-container">
+            <h2>Aktuell verfügbare Geräte</h2>
+            <ul>
+                <li>Gerät 1, Raum X..</li>
+                <li>Gerät 2, Raum Y..</li>
+                <li>Gerät 3, Raum Z..</li>
+                <!-- Weitere Listenelemente für die aktuellen verfügbaren Geräte -->
+            </ul>
+        </div>
+    </div>
+	</header>
 
+    
+    
 </body>
 </html>
