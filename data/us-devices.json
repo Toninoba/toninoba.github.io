@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Ultraschallgerät 1",
+    "room": 328,
+    "sonden": ["Typ 1", "Typ 2"],
+    "available": true
+  },
+  {
+    "name": "Ultraschallgerät 2",
+    "room": 310,
+    "sonden": ["Typ 3", "Typ 4"],
+    "available": false
+  },
+  {
+    "name": "Ultraschallgerät 3",
+    "room": 308,
+    "sonden": ["Typ 1"],
+    "available": true
+  }
+]
