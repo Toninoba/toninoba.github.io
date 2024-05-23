@@ -1,10 +1,12 @@
 [
   {
+    "arzt": "Dr Bauer",
     "room": 310,
     "x": 581,
     "y": 532
   },
   {
+    "arzt": "Dr Mueller",
     "room": 305,
     "x": 151,
     "y": 320

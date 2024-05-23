@@ -51,8 +51,16 @@
 
     <h2>Ultraschallgeräte nach Raum suchen</h2>
     <p>Suchen Sie nach Ultraschallgeräten, die in einem bestimmten Raum verfügbar sind.</p>
-    <!-- Hier können weitere Inhalte eingefügt werden, z.B. eine interaktive Karte mit Rauminformationen -->
+    <div id="input-container">
+        <input type="text" id="room-input" placeholder="Raum eingeben">
+        <input type="button" id="room-input-submit" value="Suchen" onclick="searchRoom()">
+        <div id="room-list"></div>
+
+    </div>
 
 
+
+
+    <script src="script.js"></script>
 </body>
 </html>

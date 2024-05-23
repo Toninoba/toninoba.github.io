@@ -3,7 +3,9 @@ circles.forEach(function (circle) {
     circle.addEventListener("click", clickEvent)
 })
 
-let jsonFilePath = "data/us-devices.json";
+
+
+let deviceFilePath = "data/us-devices.json";
 let clickedCircle;
 
 function clickEvent(event){
@@ -11,7 +13,7 @@ function clickEvent(event){
     clickedCircle = event.target.id
     console.log('Starting click Event')
 
-    fetch(jsonFilePath)
+    fetch(deviceFilePath)
         .then(response => response.json())
         .then(data => {
             data.forEach(obj => {
@@ -41,7 +43,7 @@ function displayUSDeviceInfo(data){
     }
     const text_input = document.createElement('input');
     text_input.type = 'text';
-    text_input.placeholder = "Geben sie einen Raum ein!"
+    text_input.placeholder = "Geben sie ihren Namen ein!"
 
     const submit_button = document.createElement('button');
     submit_button.textContent = "Bestätigen";
@@ -59,21 +61,21 @@ function displayUSDeviceInfo(data){
 
 }
 
-function moveToRoom(room, usData){
+function moveToRoom(arzt, usData){
     console.log('Starting method move to room')
 
     fetch('data/rooms.json')
         .then(response => response.json())
         .then(data => {
             data.forEach(obj => {
-                console.log(parseInt(room));
+                console.log(parseInt(arzt));
                 console.log(obj.room);
 
 
-                if(obj.room === parseInt(room)){
+                if(obj.arzt === arzt){
                     console.log('Found room')
                     moveCircle(obj.x, obj.y);
-                    usData.room = parseInt(room);
+                    usData.room = obj.room;
                     displayUSDeviceInfo(usData)
                 }
             })
@@ -89,4 +91,59 @@ function moveCircle(deltaX, deltaY){
 
     circle.style.left = deltaX + 'px';
     circle.style.top = deltaY + 'px';
+}
+
+document.addEventListener('DOMContentLoaded', fetchDevices);
+
+async function fetchDevices(){
+
+    fetch(deviceFilePath)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(obj => {
+                if(obj.available === true){
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${obj.name}, Raum: ${obj.room}, Sonden: ${obj.sonden}`;
+                    deviceList.appendChild(listItem);
+                }
+
+
+            })
+        })
+        .catch(error => console.error(error));
+
+    const deviceList = document.getElementById('device-list');
+}
+
+function searchRoom(){
+    const input = document.getElementById('room-input').value;
+    const inputContainer = document.getElementById('room-list');
+    inputContainer.innerHTML = '';
+
+    fetch(deviceFilePath)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(obj =>{
+
+
+                if(obj.room === parseInt(input) && obj.available === true){
+
+                    console.log(obj);
+                    const listData = document.createElement('li');
+                    listData.textContent = `${obj.name}, Raum: ${obj.room}, Sonden: ${obj.sonden}`;
+
+
+
+                    inputContainer.appendChild(listData);
+                }
+
+
+
+            })
+
+
+        })
+        .catch(error => console.error(error));
+
+
 }
