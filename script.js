@@ -141,7 +141,6 @@ function searchRoom(){
 
             })
 
-
         })
         .catch(error => console.error(error));
 
