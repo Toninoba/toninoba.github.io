@@ -3,45 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klinikum Ultraschallgeräte Navigation</title>
+    <title>UltraNav</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        header nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-			text-align: center; 
-        }
-        
-        header nav ul li {
-    display: inline-block; /* Ändere float: left; zu display: inline-block; */
-    vertical-align: middle; /* Zentriere vertikal */
-}
-        
-        header nav ul li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        
-        header nav ul li a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-	
-    </style>
+
 </head>
 <body>
     <header>
-        <center><h1>Navigationsplattform für Klinikumseffizienz</h1><center>
+        <center><h1>Navigationsplattform</h1><center>
         <nav>
             <ul>
 				<li><a href="index.html">Homepage</a></li>
-                <li><a href="Availability.html">Verfügbarkeit prüfen</a></li>
+                <li><a href="Availability.html">Verfügbarkeit</a></li>
                 <li><a href="Room.html">Geräte nach Raum suchen</a></li>
             </ul>
         </nav>
@@ -49,10 +21,53 @@
 	
 	
 
-        <h2>Ultraschallgeräte Verfügbarkeit</h2>
-        <p>Hier können Ärzte die Verfügbarkeit von Ultraschallgeräten für nächste Tage überprüfen, nächste Termine eintragen.</p>
-        <!-- Hier können weitere Inhalte eingefügt werden, z.B. ein Formular zur Verfügbarkeitsprüfung -->
+        <center><h2>Verfügbarkeit der Geräte überprüfen und Termine vereinbaren</h2></center>
 
 
+	<div class="header_content">
+		
+		
+		<div class="second_container">
+		
+		
+		<div class="calendar">
+      <div class="calendar-header">
+        <span class="month-picker" id="month-picker"> May </span>
+        <div class="year-picker" id="year-picker">
+          <span class="year-change" id="pre-year">
+            <pre><</pre>
+          </span>
+          <span id="year">2020 </span>
+          <span class="year-change" id="next-year">
+            <pre>></pre>
+          </span>
+        </div>
+      </div>
+
+      <div class="calendar-body">
+        <div class="calendar-week-days">
+        </div>
+        <div class="calendar-days"></div>
+      </div>
+      <div class="calendar-footer">
+      </div>
+      
+      <div class="month-list"></div>
+	  
+	  <script src="script_availability.js" defer></script>
+    </div>
+		</div>
+		
+		<div class="third_container">
+			<div class="selected-date-display"></div>
+			
+			<div class="filter"></div>
+			<div class="device-information"></div>
+			
+			<div class="time-slots"></div>
+			
+			<div class="booking-Window"></div>
+		</div>
+	</div>
 </body>
 </html>

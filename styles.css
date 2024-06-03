@@ -1,3 +1,368 @@
+@font-face {
+    font-family: "Axios"; 
+    src: url("Axios.otf") format("opentype"); 
+}
+
+:root {
+    --global-font-size: 18px; 
+}
+
+h2, h1, a, p {
+    font-family: "Axios"; 
+}
+
+header nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #006d6b;
+	text-align: center; 
+}
+
+header nav ul li {
+	display: inline-block; /* Ändere float: left; zu display: inline-block; */
+	vertical-align: middle; /* Zentriere vertikal */
+}
+
+header nav ul li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+header nav ul li a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+.header_content {
+	display: flex;
+	justify-content: space-between; /* Elemente werden auf beiden Seiten des Containers platziert */
+	align-items: flex-start; /* Elemente werden am oberen Rand des Containers ausgerichtet */
+}
+
+.first_container,
+.second_container,
+.third_container {
+	flex: 1;
+}
+
+.first_container {
+	margin-left: 50px;
+}
+
+.third_container {
+	height: 30rem;
+	width: max-content;
+	background-color: white;
+	border-radius: 25px;
+	border-style: solid;
+	border-color: #006d6b; 
+	overflow: hidden;
+	padding: 35px 50px 0px 50px;
+}
+
+.calendar {
+  height: 35rem;
+  width: max-content;
+  background-color: white;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 35px 50px 0px 50px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.calendar-header {
+  background: #006d6b;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 7px;
+  align-items: center;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 10px;
+  font-family: "Axios";
+}
+
+.calendar-body {
+  padding: 10px;
+}
+
+.calendar-week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 600;
+  cursor: pointer;
+  color: rgb(104, 104, 104);
+  font-family: "Axios";
+}
+
+.calendar-week-days div:hover {
+  color: black;
+  transform: scale(1.2);
+  transition: all .2s ease-in-out;
+}
+
+.calendar-week-days div {
+  display: grid;
+  place-items: center;
+  color: #006d6b;
+  height: 50px;
+  
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  color: #001f1e;
+  font-family: "Axios";
+}
+
+.calendar-days div {
+  width: 37px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+  animation: to-top 1s forwards;
+}
+
+.month-picker {
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.year-picker {
+  display: flex;
+  align-items: center;
+}
+
+.year-change {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.year-change:hover {
+  background-color: #92c8c2;
+  transition: all .2s ease-in-out;
+  transform: scale(1.12);
+}
+
+.calendar-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#year:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.2 ease-in-out;
+}
+
+.calendar-days div span {
+  position: absolute;
+}
+
+.calendar-days div:hover {
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  background-color: #cff3f1;
+  border-radius: 20%;
+  color: #001f1e;
+}
+
+.calendar-day {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  margin: 2px;
+  cursor: pointer;
+}
+.selected {
+  color: #f8fbff;
+  background-color: #006d6b;
+  border-radius: 20%;
+}
+.selected-date-display {
+  margin-top: 0px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.device-information {
+  font-family: "Axios";
+  font-size: 18px;
+}
+
+.room-328:hover, .room-329:hover {
+	cursor: pointer;
+	color: #006d6b;
+}
+
+.device-selected {
+    font-family: "Axios";
+    margin-top: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.selected-date-display {
+	font-family: "Axios";
+}
+
+
+.time-slots {
+	display: none;
+    font-family: "Axios";
+    margin-top: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.time-slot {
+    display: flex;
+    justify-content: space-between; /* Align items on each row with space between */
+    align-items: center; /* Center items vertically */
+    padding: 2px 0; /* Padding for spacing */
+}
+
+.book-button {
+	margin-right: 150px;
+	background-color: #f3f1ea;
+	color: #001f1e;
+	border-radius: 15px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: var(--global-font-size);
+	font-family: "Axios";
+	margin-top: 2px;
+}
+
+.book-button:hover, .book-button.active {
+    background-color: #006d6b; /* Darker green on hover */
+	color: #f3f1ea;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+    transform: translateY(-2px); /* Slightly move up on hover */
+}
+
+
+.booking-Window {
+	margin-top: 20px;
+	font-family: "Axios";
+	font-size: var(--global-font-size);
+}
+
+
+.month-list {
+  position: relative;
+  left: 0;
+  top: -130px;
+  background-color: #cff3f1;
+  color: #151426;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 5px;
+  border-radius: 20px;
+  font-family: "Axios";
+}
+
+.month-list>div {
+  display: grid;
+  place-content: center;
+  margin: 5px 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.month-list>div>div {
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.month-list>div>div:hover {
+  background-color: #92c8c2;
+  color: #f8fbff;
+  transform: scale(0.9);
+  transition: all 0.2s ease-in-out;
+}
+
+.month-list.show {
+  visibility: visible;
+  pointer-events: visible;
+  transition: 0.6s ease-in-out;
+  animation: to-left .71s forwards;
+}
+
+.month-list.hideonce {
+  visibility: hidden;
+}
+
+.month-list.hide {
+  animation: to-right 1s forwards;
+  visibility: none;
+  pointer-events: none;
+}
+
+
+
+@keyframes to-top {
+  0% {
+	transform: translateY(0);
+	opacity: 0;
+  }
+
+  100% {
+	transform: translateY(100%);
+	opacity: 1;
+  }
+}
+
+@keyframes to-left {
+  0% {
+	transform: translatex(230%);
+	opacity: 1;
+  }
+
+  100% {
+	transform: translatex(0);
+	opacity: 1;
+  }
+}
+
+@keyframes to-right {
+  10% {
+	transform: translatex(0);
+	opacity: 1;
+  }
+
+  100% {
+	transform: translatex(-150%);
+	opacity: 1;
+  }
+}
+		
+
+
 .circle{
     border-radius: 50%;
     width: 40px;
@@ -29,8 +394,7 @@
     height: 300px;
     width: 250px;
     border-radius: 2%;
-
-    font-family: Arial, sans-serif;
+    font-family: "Axios";
     font-size: 20px;
     color: white;
     padding: 15px;
