@@ -37,27 +37,34 @@ function displayUSDeviceInfo(data){
     let jsonContents = '';
 
     for(const key in data){
-        if(data.hasOwnProperty(key)){
+        if(data.hasOwnProperty(key) && key !== 'available'){
             jsonContents += `${key}: ${data[key]}\n`
         }
     }
-    const text_input = document.createElement('input');
-    text_input.type = 'text';
-    text_input.placeholder = "Geben sie ihren Namen ein!"
+    if (data.hasOwnProperty('available')) {
+        if (data.available) {
+            jsonContents += `Status: Verfügbar\n`;
+            const submit_button = document.createElement('button');
+            submit_button.className = "submit-button";
+            submit_button.textContent = "Gerät belegen";
+            textBox.appendChild(submit_button);
+            submit_button.addEventListener('click', () => {
 
-    const submit_button = document.createElement('button');
-    submit_button.textContent = "Bestätigen";
+                moveToRoom(text_input.value ,data);
+            })
+        } else {
+            jsonContents += `Status: Nicht verfügbar\n`;
+        }
+    }
+
+
+    //const text_input = document.createElement('input');
+    //text_input.type = 'text';
+    //text_input.placeholder = "Geben sie ihren Namen ein!"
 
 
     textBox.innerText = jsonContents;
-    textBox.appendChild(text_input);
-    textBox.appendChild(submit_button);
-
-    submit_button.addEventListener('click', () => {
-
-        moveToRoom(text_input.value ,data);
-    })
-
+    //textBox.appendChild(text_input);
 
 }
 

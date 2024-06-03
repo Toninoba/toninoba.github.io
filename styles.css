@@ -44,6 +44,18 @@ header nav ul li a:hover {
 	align-items: flex-start; /* Elemente werden am oberen Rand des Containers ausgerichtet */
 }
 
+.right-container {
+    background-color: white;
+    border-radius: 25px;
+    border-style: solid;
+	border-color: #006d6b;
+    padding: 0 0 0 0!important;
+}
+
+.text-box {
+    background-color: #f5f5f5;
+}
+
 .first_container,
 .second_container,
 .third_container {
@@ -224,7 +236,7 @@ header nav ul li a:hover {
     background-color: #f5f5f5;
 }
 
-.selected-date-display {
+.selected-date-display, #room-input {
 	font-family: "Axios";
 }
 
@@ -246,7 +258,7 @@ header nav ul li a:hover {
     padding: 2px 0; /* Padding for spacing */
 }
 
-.book-button {
+.book-button, .submit-button, #room-input-submit {
 	margin-right: 150px;
 	background-color: #f3f1ea;
 	color: #001f1e;
@@ -258,7 +270,7 @@ header nav ul li a:hover {
 	margin-top: 2px;
 }
 
-.book-button:hover, .book-button.active {
+.book-button:hover, .book-button.active, .submit-button:hover, #room-input-submit:hover {
     background-color: #006d6b; /* Darker green on hover */
 	color: #f3f1ea;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
@@ -374,19 +386,19 @@ header nav ul li a:hover {
 #Ultraschallgerät\ 1{
     background-color: #ff3232;
     left: 105px;
-    top: 532px;
+    top: 552px;
 }
 
 #Ultraschallgerät\ 2{
     background-color: deepskyblue;
     left: 581px;
-    top: 350px;
+    top: 370px;
 }
 
 #Ultraschallgerät\ 3{
     background-color: lawngreen;
     left: 151px;
-    top: 340px;
+    top: 370px;
 }
 
 #text-box {
