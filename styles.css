@@ -40,8 +40,9 @@ header nav ul li a:hover {
 
 .header_content {
 	display: flex;
-	justify-content: space-between; /* Elemente werden auf beiden Seiten des Containers platziert */
-	align-items: flex-start; /* Elemente werden am oberen Rand des Containers ausgerichtet */
+	justify-content: space-between; 
+	align-items: flex-start; 
+    flex-direction: row;
 }
 
 .left-container, .right-container {

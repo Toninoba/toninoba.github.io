@@ -124,8 +124,8 @@ async function fetchDevices(){
 
 function searchRoom(){
     const input = document.getElementById('room-input').value;
-    const inputContainer = document.getElementById('room-list');
-    inputContainer.innerHTML = '';
+    const roomList = document.getElementById('room-list');
+    roomList.innerHTML = '';
 
     fetch(deviceFilePath)
         .then(response => response.json())
@@ -140,8 +140,7 @@ function searchRoom(){
                     listData.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden}`;
 
 
-
-                    inputContainer.appendChild(listData);
+                    roomList.appendChild(listData);
                 }
 
 
