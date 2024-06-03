@@ -8,13 +8,13 @@
   {
     "Name": "Philips EPIQ CVx",
     "Raum": 329,
-    "sonden": ["Typ 3", "Typ 4"],
+    "Sonden": ["Typ 3", "Typ 4"],
     "available": false
   },
   {
-    "name": "Ultraschallgerät 3",
-    "room": 308,
-    "sonden": ["Typ 1"],
+    "Name": "Ultraschallgerät 3",
+    "Raum": 308,
+    "Sonden": ["Typ 1"],
     "available": true
   }
 ]

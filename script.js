@@ -110,7 +110,7 @@ async function fetchDevices(){
             data.forEach(obj => {
                 if(obj.available === true){
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${obj.name}, Raum: ${obj.room}, Sonden: ${obj.sonden}`;
+                    listItem.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden}`;
                     deviceList.appendChild(listItem);
                 }
 
@@ -137,7 +137,7 @@ function searchRoom(){
 
                     console.log(obj);
                     const listData = document.createElement('li');
-                    listData.textContent = `${obj.name}, Raum: ${obj.room}, Sonden: ${obj.sonden}`;
+                    listData.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden}`;
 
 
 

@@ -44,6 +44,14 @@ header nav ul li a:hover {
 	align-items: flex-start; /* Elemente werden am oberen Rand des Containers ausgerichtet */
 }
 
+.left-container, .right-container {
+	flex: 1;
+}
+
+.left-container {
+    margin-right: 20px;
+}
+
 .right-container {
     background-color: white;
     border-radius: 25px;
