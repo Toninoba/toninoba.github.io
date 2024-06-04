@@ -43,23 +43,18 @@ header nav ul li a:hover {
 	justify-content: space-between; 
 	align-items: flex-start; 
     flex-direction: row;
+	padding: 20px;
 }
 
 .left-container, .right-container {
-	flex: 1;
+	width: 48%;
+	background-color: white;
+	padding: 20px;
+	text-align: center;
 }
 
-.left-container {
-    margin-right: 20px;
-}
-
-.right-container {
-	  margin-top: 100px;
-    background-color: white;
-    border-radius: 25px;
-    border-style: solid;
-	border-color: #006d6b;
-    padding: 0 0 0 0!important;
+.left-container h2, .right-container h2 {
+	margin: 0;	
 }
 
 .first_container,
@@ -242,7 +237,7 @@ header nav ul li a:hover {
     background-color: #f5f5f5;
 }
 
-.selected-date-display, #room-input {
+.selected-date-display, #room-input, li {
 	font-family: "Axios";
 }
 
@@ -276,7 +271,11 @@ header nav ul li a:hover {
 	margin-top: 2px;
 }
 
-.book-button:hover, .book-button.active, .submit-button:hover, #room-input-submit:hover {
+.submit-button {
+	margin-top: 50px;
+}
+
+.book-button:hover, .book-button.active, .submit-button:hover, .submit-button.active, #room-input-submit:hover {
     background-color: #006d6b; /* Darker green on hover */
 	color: #f3f1ea;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
@@ -286,6 +285,12 @@ header nav ul li a:hover {
 
 .booking-Window {
 	margin-top: 20px;
+	font-family: "Axios";
+	font-size: var(--global-font-size);
+}
+
+.booking-window {
+	margin-top: -220px;
 	font-family: "Axios";
 	font-size: var(--global-font-size);
 }
@@ -378,7 +383,16 @@ header nav ul li a:hover {
 	opacity: 1;
   }
 }
-		
+
+
+.search_window, #room-input, #room-list {
+	margin-left: 50px;
+	font-size: 20px;
+}
+
+#room-list {
+	margin-top: 50px;
+}
 
 
 .circle{
@@ -390,30 +404,33 @@ header nav ul li a:hover {
 }
 
 #GE\ LOGIQ\ 7{
-    background-color: #ff3232;
-    left: 105px;
-    top: 552px;
+    background-color: green;
+    left: 205px;
+    top: 800px;
 }
 
 #Philips\ EPIQ\ CVx{
-    background-color: deepskyblue;
+    background-color: red;
     left: 581px;
     top: 380px;
 }
 
 #Ultraschallgerät\ 3{
-    background-color: lawngreen;
+    background-color: blue;
     left: 151px;
     top: 370px;
 }
 
 #text-box {
-    background-color: #f5f5f5;
-    height: 300px;
-    width: 250px;
-    border-radius: 2%;
-    font-family: "Axios";
-    font-size: 20px;
-    color: white;
-    padding: 15px;
+    height: 520px;
+    width: 100%;
+	margin-top: 0px;
+    background-color: white;
+    border-radius: 25px;
+    border-style: solid;
+	border-color: #006d6b;
+    padding: 20px;
+	font-family: "Axios";
+	text-align: left;
+	font-size:24px;
 }

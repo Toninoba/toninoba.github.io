@@ -16,5 +16,12 @@
     "Raum": 308,
     "Sonden": ["Typ 1"],
     "available": true
+  },
+  {
+    "Name": "Ultraschallgerät 4",
+    "Raum": 308,
+    "Sonden": ["Typ 1"],
+    "available": true
   }
+
 ]

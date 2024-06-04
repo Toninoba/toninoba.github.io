@@ -34,6 +34,7 @@ function clickEvent(event){
 
 function displayUSDeviceInfo(data){
     const textBox = document.getElementById("text-box");
+	const submit_button = document.createElement('button');
     let jsonContents = '';
 
     for(const key in data){
@@ -44,29 +45,47 @@ function displayUSDeviceInfo(data){
     if (data.hasOwnProperty('available')) {
         if (data.available) {
             jsonContents += `Status: Verfügbar\n`;
-            const submit_button = document.createElement('button');
+            clearBookingWindow();
             submit_button.className = "submit-button";
             submit_button.textContent = "Gerät belegen";
             textBox.appendChild(submit_button);
             submit_button.addEventListener('click', () => {
-
-                moveToRoom(text_input.value ,data);
+                //moveToRoom(text_input.value ,data);
+				submit_button.classList.add('active');
+				displayBookingWindow();
             })
         } else {
             jsonContents += `Status: Nicht verfügbar\n`;
+			submit_button.style.display = 'none';
+			clearBookingWindow();
         }
     }
-
+	
 
     //const text_input = document.createElement('input');
     //text_input.type = 'text';
     //text_input.placeholder = "Geben sie ihren Namen ein!"
-
-
+	
+	
     textBox.innerText = jsonContents;
+	textBox.appendChild(submit_button);
     //textBox.appendChild(text_input);
 
 }
+
+function displayBookingWindow() {
+      const bookingWindow = document.querySelector('.booking-window');
+      bookingWindow.textContent = 'Sie haben Ihren Termin erfolgreich gebucht!';
+      bookingWindow.style.display = 'block';
+  }
+  
+  function clearBookingWindow() {
+      const bookingWindow = document.querySelector('.booking-window');
+      bookingWindow.textContent = ''; // Clear the content
+      bookingWindow.style.display = 'none'; // Hide the booking window
+  }
+
+
 
 function moveToRoom(arzt, usData){
     console.log('Starting method move to room')
@@ -133,16 +152,15 @@ function searchRoom(){
             data.forEach(obj =>{
 
 
-                if(obj.Raum === parseInt(input) && obj.available === true){
+                if(obj.Raum === parseInt(input)){
 
                     console.log(obj);
                     const listData = document.createElement('li');
                     listData.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden}`;
 
-
-
                     roomList.appendChild(listData);
                 }
+
 
 
             })
