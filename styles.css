@@ -38,7 +38,7 @@ header nav ul li a:hover {
 	color: black;
 }
 
-.header_content {
+.header-content {
 	display: flex;
 	justify-content: space-between; 
 	align-items: flex-start; 
@@ -54,15 +54,12 @@ header nav ul li a:hover {
 }
 
 .right-container {
+	margin-top: 100px;
     background-color: white;
     border-radius: 25px;
     border-style: solid;
 	border-color: #006d6b;
     padding: 0 0 0 0!important;
-}
-
-.text-box {
-    background-color: #f5f5f5;
 }
 
 .first_container,
@@ -392,16 +389,16 @@ header nav ul li a:hover {
     position: absolute;
 }
 
-#Ultraschallgerät\ 1{
+#GE\ LOGIQ\ 7{
     background-color: #ff3232;
     left: 105px;
     top: 552px;
 }
 
-#Ultraschallgerät\ 2{
+#Philips\ EPIQ\ CVx{
     background-color: deepskyblue;
     left: 581px;
-    top: 370px;
+    top: 380px;
 }
 
 #Ultraschallgerät\ 3{
@@ -411,7 +408,7 @@ header nav ul li a:hover {
 }
 
 #text-box {
-    background-color: #717171;
+    background-color: #f5f5f5;
     height: 300px;
     width: 250px;
     border-radius: 2%;

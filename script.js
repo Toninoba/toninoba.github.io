@@ -17,7 +17,7 @@ function clickEvent(event){
         .then(response => response.json())
         .then(data => {
             data.forEach(obj => {
-                if(obj.name === clickedCircle){
+                if(obj.Name === clickedCircle){
                     console.log('Found obj in json')
                     us_device = obj;
                     displayUSDeviceInfo(us_device);
@@ -76,13 +76,13 @@ function moveToRoom(arzt, usData){
         .then(data => {
             data.forEach(obj => {
                 console.log(parseInt(arzt));
-                console.log(obj.room);
+                console.log(obj.Room);
 
 
-                if(obj.arzt === arzt){
+                if(obj.Arzt === arzt){
                     console.log('Found room')
                     moveCircle(obj.x, obj.y);
-                    usData.room = obj.room;
+                    usData.room = obj.Raum;
                     displayUSDeviceInfo(usData)
                 }
             })
@@ -124,7 +124,7 @@ async function fetchDevices(){
 
 function searchRoom(){
     const input = document.getElementById('room-input').value;
-    const roomList = document.getElementById('room-list');
+	const roomList = document.getElementById('room-list');
     roomList.innerHTML = '';
 
     fetch(deviceFilePath)
@@ -133,11 +133,12 @@ function searchRoom(){
             data.forEach(obj =>{
 
 
-                if(obj.room === parseInt(input) && obj.available === true){
+                if(obj.Raum === parseInt(input) && obj.available === true){
 
                     console.log(obj);
                     const listData = document.createElement('li');
                     listData.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden}`;
+
 
 
                     roomList.appendChild(listData);

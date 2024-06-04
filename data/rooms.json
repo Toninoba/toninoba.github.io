@@ -1,19 +1,19 @@
 [
   {
-    "arzt": "Dr Bauer",
-    "room": 310,
+    "Arzt": "Dr Bauer",
+    "Raum": 310,
     "x": 581,
     "y": 532
   },
   {
-    "arzt": "Dr Mueller",
-    "room": 305,
+    "Arzt": "Dr Mueller",
+    "Raum": 305,
     "x": 151,
     "y": 320
   },
   {
-    "arzt": "Dr Brand",
-    "room": 322,
+    "Arzt": "Dr Brand",
+    "Raum": 322,
     "x": 171,
     "y": 280
   }
