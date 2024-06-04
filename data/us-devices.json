@@ -2,25 +2,25 @@
   {
     "Name": "GE LOGIQ 7",
     "Raum": 328,
-    "Sonden": ["Typ 1", "Typ 2"],
+    "Sonden": ["C1-6-D","9L-D","3SP-D"],
     "available": true
   },
   {
     "Name": "Philips EPIQ CVx",
     "Raum": 329,
-    "Sonden": ["Typ 3", "Typ 4"],
+    "Sonden": ["C5-1", "L12-3","L12-5"],
     "available": false
   },
   {
-    "Name": "Ultraschallgerät 3",
+    "Name": "GE Venue",
     "Raum": 308,
-    "Sonden": ["Typ 1"],
+    "Sonden": ["6Tc-RS (TEE)","C1-5-RS","L12n-RS"],
     "available": true
   },
   {
-    "Name": "Ultraschallgerät 4",
+    "Name": "GE Voluson P8",
     "Raum": 308,
-    "Sonden": ["Typ 1"],
+    "Sonden": ["4C-RS","12L-RS"],
     "available": true
   }
 

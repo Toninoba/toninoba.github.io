@@ -37,11 +37,16 @@ function displayUSDeviceInfo(data){
 	const submit_button = document.createElement('button');
     let jsonContents = '';
 
-    for(const key in data){
-        if(data.hasOwnProperty(key) && key !== 'available'){
-            jsonContents += `${key}: ${data[key]}\n`
-        }
-    }
+	for (const key in data) {
+		if (data.hasOwnProperty(key) && key !== 'available') {
+			if (Array.isArray(data[key])) {
+				jsonContents += `${key}: ${data[key].join(', ')}\n`;
+			} else {
+				jsonContents += `${key}: ${data[key]}\n`;
+			}
+		}
+	}
+
     if (data.hasOwnProperty('available')) {
         if (data.available) {
             jsonContents += `Status: Verfügbar\n`;
@@ -129,7 +134,7 @@ async function fetchDevices(){
             data.forEach(obj => {
                 if(obj.available === true){
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden}`;
+                    listItem.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden.join(', ')}`;
                     deviceList.appendChild(listItem);
                 }
 
@@ -145,28 +150,19 @@ function searchRoom(){
     const input = document.getElementById('room-input').value;
 	const roomList = document.getElementById('room-list');
     roomList.innerHTML = '';
-
     fetch(deviceFilePath)
         .then(response => response.json())
         .then(data => {
             data.forEach(obj =>{
-
-
                 if(obj.Raum === parseInt(input)){
 
                     console.log(obj);
                     const listData = document.createElement('li');
-                    listData.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden}`;
+                    listData.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden.join(', ')}`;
 
                     roomList.appendChild(listData);
                 }
-
-
-
             })
-
         })
         .catch(error => console.error(error));
-
-
 }

@@ -3,7 +3,7 @@ const jsonData ={
       {
         "name": "GE LOGIQ 7",
         "room": 328,
-        "sonden": ["Typ 1", "Typ 2"],
+        "sonden": ["C1-6-D","9L-D","3SP-D"],
         "schedule": [
           {
             "date": "2024-05-31",
@@ -30,28 +30,217 @@ const jsonData ={
               { "time": "15:00", "status": "available" },
               { "time": "16:00", "status": "available" }
             ]
-          }
+          },
+		  {		
+    "date": "2024-06-03",
+    "availability": [
+      { "time": "09:00", "status": "available" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "blocked" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "blocked" }
+    ]
+	},
+	{		
+    "date": "2024-06-04",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "available" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "blocked" }
+    ]
+  },
+  {
+    "date": "2024-06-05",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "blocked" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "blocked" }
+    ]
+  },
+  {
+    "date": "2024-06-06",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "blocked" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "blocked" }
+    ]
+  },
+  {
+    "date": "2024-06-07",
+    "availability": [
+      { "time": "09:00", "status": "available" },
+      { "time": "10:00", "status": "available" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "available" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "blocked" }
+				]
+			}
         ]
       },
       {
         "name": "Philips EPIQ CVx",
         "room": 329,
-        "sonden": ["Typ 3", "Typ 4"],
-        "schedule": [
-          {
-          
-            "date": "2024-06-01",
-            "availability": [
-              { "time": "09:00", "status": "available" },
-              { "time": "10:00", "status": "available" },
-              { "time": "11:00", "status": "available" },
-              { "time": "12:00", "status": "blocked" },
-              { "time": "13:00", "status": "available" },
-              { "time": "14:00", "status": "available" },
-              { "time": "15:00", "status": "blocked" },
-              { "time": "16:00", "status": "available" }
-            ]
-          }
+        "sonden": ["C5-1", "L12-3","L12-5"],
+        "schedule": 	[
+	{		
+    "date": "2024-06-03",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "available" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "available" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "available" },
+      { "time": "16:00", "status": "blocked" }
+    ]
+	},
+	{		
+    "date": "2024-06-04",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "available" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "available" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "available" }
+    ]
+  },
+  {
+    "date": "2024-06-05",
+    "availability": [
+      { "time": "09:00", "status": "available" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "available" },
+      { "time": "12:00", "status": "blocked" },
+      { "time": "13:00", "status": "available" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "available" }
+    ]
+  },
+  {
+    "date": "2024-06-06",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "available" },
+      { "time": "11:00", "status": "available" },
+      { "time": "12:00", "status": "available" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "available" }
+    ]
+  },
+  {
+    "date": "2024-06-07",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "blocked" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "blocked" }
+				]
+			}
+        ]
+      },
+	  {
+        "name": "GE Venue",
+        "room": 308,
+        "sonden": ["6Tc-RS (TEE)","C1-5-RS","L12n-RS"],
+        "schedule": 
+	[
+	{		
+    "date": "2024-06-03",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "blocked" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "available" },
+      { "time": "16:00", "status": "available" }
+    ]
+	},
+	{		
+    "date": "2024-06-04",
+    "availability": [
+      { "time": "09:00", "status": "available" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "blocked" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "available" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "available" }
+    ]
+  },
+  {
+    "date": "2024-06-05",
+    "availability": [
+      { "time": "09:00", "status": "available" },
+      { "time": "10:00", "status": "blocked" },
+      { "time": "11:00", "status": "available" },
+      { "time": "12:00", "status": "blocked" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "available" }
+    ]
+  },
+  {
+    "date": "2024-06-06",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "available" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "available" },
+      { "time": "13:00", "status": "available" },
+      { "time": "14:00", "status": "blocked" },
+      { "time": "15:00", "status": "blocked" },
+      { "time": "16:00", "status": "available" }
+    ]
+  },
+  {
+    "date": "2024-06-07",
+    "availability": [
+      { "time": "09:00", "status": "blocked" },
+      { "time": "10:00", "status": "available" },
+      { "time": "11:00", "status": "blocked" },
+      { "time": "12:00", "status": "available" },
+      { "time": "13:00", "status": "blocked" },
+      { "time": "14:00", "status": "available" },
+      { "time": "15:00", "status": "available" },
+      { "time": "16:00", "status": "blocked" }
+				]
+			}
         ]
       }
     ]
@@ -180,7 +369,7 @@ const jsonData ={
           if (hasAvailableSlots) {
               const deviceElement = document.createElement('div');
               deviceElement.classList.add('device', `room-${device.room}`);
-              deviceElement.textContent = `${device.name} [Raum: ${device.room}]`;
+              deviceElement.textContent = `${device.name} [Raum: ${device.room}] [Sonden: ${device.sonden.join(', ')}]`;
               deviceElement.addEventListener('click', () => {
                   toggleTimeSlots(device, selectedDate);
                   toggleDeviceFrame(deviceElement);

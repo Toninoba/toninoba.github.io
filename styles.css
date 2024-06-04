@@ -223,7 +223,7 @@ header nav ul li a:hover {
   font-size: 18px;
 }
 
-.room-328:hover, .room-329:hover {
+.room-328:hover, .room-329:hover,.room-308:hover {
 	cursor: pointer;
 	color: #006d6b;
 }
@@ -415,7 +415,7 @@ header nav ul li a:hover {
     top: 380px;
 }
 
-#Ultraschallgerät\ 3{
+#GE\ Venue{
     background-color: blue;
     left: 151px;
     top: 370px;
