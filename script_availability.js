@@ -424,6 +424,7 @@ const jsonData ={
       const bookingWindow = document.querySelector('.booking-Window');
       bookingWindow.textContent = 'Sie haben Ihren Termin erfolgreich gebucht!';
       bookingWindow.style.display = 'block';
+      setTimeout(function() { bookingWindow.style.display = 'none'; }, 3000);
   }
   
   function clearBookingWindow() {
