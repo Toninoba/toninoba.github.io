@@ -2,7 +2,7 @@ Eine neue kleine TODO Liste:
 
 1. Die Karte ändern (Farben im Vergleich zu Kreischen) //Done
 2. Kreischen mehr interaktiv machen (vielleicht mit Schatten wenn man Kursor da hat? Oder generell mit innerem Schatten) //Done
-3. Filter auf der ersten Seite einbauen (der Arzt kann sein Lieblingsgerät definieren (vllt mit Sternchen?), nach Verfügbarkeit filtern, nach dem Ort (welche Etage), Firma, Sonden filtern + nach Modis filtern (mögliche: CW-Doppler, 4D-Modus, TVI, Biopsie).)
+3. Filter auf der ersten Seite einbauen (der Arzt kann sein Lieblingsgerät definieren (vllt mit Sternchen?), nach Verfügbarkeit filtern, nach dem Ort (welche Etage), Firma, Sonden filtern + nach Modis filtern (mögliche: CW-Doppler, 4D-Modus, TVI, Biopsie).) //Done
 4. Zweite Etage einbauen
 5. Die Farbe der Kreisen als Seitenfarbe (blau) definieren (nur alle verfügbare Geräte werden gezeigt => nur eine Farbe ist gebraucht + gut für Menschen, die farbenblind sind). 
 6. Aktueller Standort des Arztes hinzufügen (ein Kreuz oder Stern ?) 
