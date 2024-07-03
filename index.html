@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <center><h1>Navigationsplattform</h1><center>
+        <div style="text-align: center;"><h1>Navigationsplattform</h1></div>
         <nav>
             <ul>
 				<li><a href="index.html">Homepage</a></li>
@@ -32,9 +32,34 @@
 
         </div>
         <div class="right-container">
-            <h2>Aktuell verfügbare Geräte</h2>
+            <h2>Geräteinformationen</h2>
             <div id="text-box" class="text-box"></div>
-			<div class="booking-window"></div>
+            <div class="booking-Window"></div>
+
+            <h2>Gerätefilter</h2>
+            <div id="device-filter-container" class="text-box">
+                <div id="filters" class="filter-text-box">
+                    <div class="available-checkbox">
+                        <input type="checkbox" id="available-checkbox"> Available <br>
+                    </div>
+
+                    <div class="dropdown">
+                        <button>Sonden</button>
+                        <div class="dropdown-content">
+                            <input type="checkbox" id="C5-1"> C5-1 <br>
+                            <input type="checkbox" id="4C-RS"> 4C-RS <br>
+                            <input type="checkbox" id="L12n-RS"> L12n-RS <br>
+                        </div>
+                    </div>
+
+                    <label for="textInput" class="textInputLabel">Name des Gerätes</label>
+                    <input type="text" id="textInput" placeholder="Name">
+                    <button id="confirm-button" onclick="changeFilter()">Übernehmen</button>
+
+                </div>
+                <div id="device-list" class="filter-text-box"></div>
+            </div>
+
         </div>
     </div>
 	</header>

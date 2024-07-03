@@ -3,6 +3,7 @@
     src: url("Axios.otf") format("opentype"); 
 }
 
+
 :root {
     --global-font-size: 18px; 
 }
@@ -52,6 +53,15 @@ header nav ul li a:hover {
 	padding: 20px;
 	text-align: center;
 }
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
 
 .left-container h2, .right-container h2 {
 	margin: 0;	
@@ -296,6 +306,7 @@ header nav ul li a:hover {
 }
 
 
+
 .month-list {
   position: relative;
   left: 0;
@@ -401,28 +412,34 @@ header nav ul li a:hover {
     height: 40px;
     cursor: pointer;
     position: absolute;
+    transition: filter 0.3s ease;
+    background-color: red;
+}
+
+.circle:hover{
+    filter: brightness(0.4);
 }
 
 #GE\ LOGIQ\ 7{
-    background-color: green;
+
     left: 205px;
     top: 800px;
 }
 
 #Philips\ EPIQ\ CVx{
-    background-color: red;
+
     left: 581px;
     top: 380px;
 }
 
 #GE\ Venue{
-    background-color: blue;
+
     left: 151px;
     top: 370px;
 }
 
-#text-box {
-    height: 520px;
+.text-box {
+    height: 255px;
     width: 100%;
 	margin-top: 0px;
     background-color: white;
@@ -434,3 +451,115 @@ header nav ul li a:hover {
 	text-align: left;
 	font-size:24px;
 }
+
+.test1 {
+    border: 1px solid #ccc;
+    height: 360px;
+    padding: 20px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.filter-text-box {
+    height: 87%;
+    width: 100%;
+    margin-top: 2px;
+
+    margin-right: 5px;
+    background-color: white;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: #006d6b;
+    padding: 20px;
+    font-family: "Axios";
+    text-align: left;
+    font-size:24px;
+}
+
+#device-filter-container {
+    display: flex;
+    height: 400px;
+}
+
+#device-list {
+    overflow: auto; /* Fügt bei Bedarf eine horizontale Scrollleiste hinzu */
+    white-space: nowrap;
+}
+
+.filter-text-box {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.filter-text-box label {
+    display: block;
+    margin-bottom: 5px;
+}
+.filter-text-box input[type="checkbox"]{
+    margin-right: 10px; /* Abstand zwischen Checkbox und Text */
+    transform: scale(1.5); /* Vergrößern der Checkbox */
+}
+.filter-text-box input[type="text"],
+.filter-text-box select {
+    width: 95%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.dropdown{
+    display: inline-block;
+    font-family: "Axios";
+}
+
+.dropdown button {
+    margin-top: 10px;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border-style: solid;
+    border-color: #006d6b;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Axios";
+    font-size: 16px;
+}
+.dropdown .dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: #f9ffff;
+    min-width: 200px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+.dropdown:hover button{
+    filter: brightness(0.8);
+}
+.dropdown input:hover {
+    filter: brightness(0.8);
+}
+#confirm-button{
+    margin-top: 20px;
+    padding: 5px;
+    font-family: "Axios";
+    font-size: 14px;
+    background-color: white;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: #006d6b;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+#confirm-button:hover {
+    filter: brightness(0.7);
+}
+
+.textInputLabel {
+    margin-top: 20px;
+}
+
+
+
+

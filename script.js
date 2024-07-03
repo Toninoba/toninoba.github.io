@@ -1,160 +1,126 @@
 const circles = document.querySelectorAll('.circle');
+let deviceFilePath = "data/us-devices.json";
+
 circles.forEach(function (circle) {
     circle.addEventListener("click", clickEvent)
+    checkAvailable(circle);
 })
 
+document.addEventListener("DOMContentLoaded", function () {
+    checkAvailable();
+    displayDeviceList(false, "", []);
+});
 
 
-let deviceFilePath = "data/us-devices.json";
-let clickedCircle;
 
-function clickEvent(event){
+function checkAvailable() {
+    fetch(deviceFilePath)
+        .then(response => response.json())
+        .then(data => {
+            var circles = document.querySelectorAll('.circle');
+            circles.forEach(circle => {
+                var currentCircle = circle.id;
+                var device = data.find(obj => obj.Name === currentCircle);
+                if (device) {
+                    if (device.available === true) {
+                        circle.style.backgroundColor = 'green';
+                    } else {
+                        circle.style.backgroundColor = 'red';
+                    }
+                } else {
+                    console.error('Kein passendes Gerät gefunden: ' + currentCircle);
+                }
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+}
+
+
+function clickEvent(event) {
     let us_device;
-    clickedCircle = event.target.id
-    console.log('Starting click Event')
+    let clickedCircle = event.target.id;
 
     fetch(deviceFilePath)
         .then(response => response.json())
         .then(data => {
             data.forEach(obj => {
-                if(obj.Name === clickedCircle){
-                    console.log('Found obj in json')
+                console.log(obj);
+                if (obj.Name === clickedCircle) {
                     us_device = obj;
                     displayUSDeviceInfo(us_device);
-                    console.log(us_device)
                 }
             })
         })
-        .catch(error => console.error('Failed loading File ' + error))
-
-
-
-
+        .catch(error => console.error('Failed loading File ' + error));
 }
 
-function displayUSDeviceInfo(data){
+function displayUSDeviceInfo(data) {
+    clearBookingWindow();
     const textBox = document.getElementById("text-box");
-	const submit_button = document.createElement('button');
+    const submit_button = document.createElement('button');
     let jsonContents = '';
 
-	for (const key in data) {
-		if (data.hasOwnProperty(key) && key !== 'available') {
-			if (Array.isArray(data[key])) {
-				jsonContents += `${key}: ${data[key].join(', ')}\n`;
-			} else {
-				jsonContents += `${key}: ${data[key]}\n`;
-			}
-		}
-	}
+    for (const key in data) {
+        if (data.hasOwnProperty(key) && key !== 'available') {
+            if (Array.isArray(data[key])) {
+                jsonContents += `${key}: ${data[key].join(', ')}\n`;
+            } else {
+                jsonContents += `${key}: ${data[key]}\n`;
+            }
+        }
+    }
+    console.log(jsonContents);
 
     if (data.hasOwnProperty('available')) {
         if (data.available) {
             jsonContents += `Status: Verfügbar\n`;
-            clearBookingWindow();
             submit_button.className = "submit-button";
             submit_button.textContent = "Gerät belegen";
             textBox.appendChild(submit_button);
             submit_button.addEventListener('click', () => {
-                //moveToRoom(text_input.value ,data);
-				submit_button.classList.add('active');
-				displayBookingWindow();
+                submit_button.classList.add('active');
+                displayBookingWindow();
             })
         } else {
             jsonContents += `Status: Nicht verfügbar\n`;
-			submit_button.style.display = 'none';
-			clearBookingWindow();
+            submit_button.style.display = 'none';
+            clearBookingWindow();
         }
     }
-	
-
-    //const text_input = document.createElement('input');
-    //text_input.type = 'text';
-    //text_input.placeholder = "Geben sie ihren Namen ein!"
-	
-	
-    textBox.innerText = jsonContents;
-	textBox.appendChild(submit_button);
-    //textBox.appendChild(text_input);
+    if(textBox){
+        console.log("Textbox existoert")
+        textBox.innerText = jsonContents;
+        textBox.appendChild(submit_button);
+    }
+    else {
+        console.error("Textbox weg")
+    }
 
 }
 
 function displayBookingWindow() {
-      const bookingWindow = document.querySelector('.booking-window');
-      bookingWindow.textContent = 'Sie haben Ihren Termin erfolgreich gebucht!';
-      bookingWindow.style.display = 'block';
-  }
-  
-  function clearBookingWindow() {
-      const bookingWindow = document.querySelector('.booking-window');
-      bookingWindow.textContent = ''; // Clear the content
-      bookingWindow.style.display = 'none'; // Hide the booking window
-  }
-
-
-
-function moveToRoom(arzt, usData){
-    console.log('Starting method move to room')
-
-    fetch('data/rooms.json')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(obj => {
-                console.log(parseInt(arzt));
-                console.log(obj.Room);
-
-
-                if(obj.Arzt === arzt){
-                    console.log('Found room')
-                    moveCircle(obj.x, obj.y);
-                    usData.room = obj.Raum;
-                    displayUSDeviceInfo(usData)
-                }
-            })
-        })
-        .catch(error => console.error(error))
-
-
+    const bookingWindow = document.querySelector('.booking-Window');
+    bookingWindow.textContent = 'Sie haben Ihren Termin erfolgreich gebucht!';
+    bookingWindow.style.display = 'block';
 }
 
-function moveCircle(deltaX, deltaY){
-    const circle = document.getElementById(clickedCircle);
-
-
-    circle.style.left = deltaX + 'px';
-    circle.style.top = deltaY + 'px';
+function clearBookingWindow() {
+    const bookingWindow = document.querySelector('.booking-Window');
+    bookingWindow.textContent = ''; // Clear the content
+    bookingWindow.style.display = 'none'; // Hide the booking window
 }
 
-document.addEventListener('DOMContentLoaded', fetchDevices);
 
-async function fetchDevices(){
-
-    fetch(deviceFilePath)
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(obj => {
-                if(obj.available === true){
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${obj.Name}, Raum: ${obj.Raum}, Sonden: ${obj.Sonden.join(', ')}`;
-                    deviceList.appendChild(listItem);
-                }
-
-
-            })
-        })
-        .catch(error => console.error(error));
-
-    const deviceList = document.getElementById('device-list');
-}
-
-function searchRoom(){
+function searchRoom() {
     const input = document.getElementById('room-input').value;
-	const roomList = document.getElementById('room-list');
+    const roomList = document.getElementById('room-list');
     roomList.innerHTML = '';
     fetch(deviceFilePath)
         .then(response => response.json())
         .then(data => {
-            data.forEach(obj =>{
-                if(obj.Raum === parseInt(input)){
+            data.forEach(obj => {
+                if (obj.Raum === parseInt(input)) {
 
                     console.log(obj);
                     const listData = document.createElement('li');
@@ -166,3 +132,122 @@ function searchRoom(){
         })
         .catch(error => console.error(error));
 }
+
+function displayDeviceList(availableFilter, nameFilter, sondenFilter){
+    const listDiv = document.getElementById("device-list");
+    let finalDeviceList = [];
+    listDiv.innerHTML = '';
+
+
+    fetch(deviceFilePath)
+        .then(response => response.json())
+        .then(data => {
+            let availableDevices;
+            if(availableFilter){
+                availableDevices = data.filter(device => device.available);
+            }
+            else {
+                availableDevices = data;
+            }
+            if(nameFilter !== ""){
+                availableDevices = availableDevices.filter(device => device.Name === nameFilter);
+            }
+
+            if(sondenFilter.length !== 0){
+
+
+                for (let i = 0; i < availableDevices.length; i++) {
+                    const currentDevice = availableDevices[i];
+
+                    if(isDeepEqual(sondenFilter, currentDevice)){
+                        finalDeviceList.push(currentDevice);
+                    }
+
+
+                }
+
+            }
+            else {
+                finalDeviceList = availableDevices;
+            }
+            console.log(finalDeviceList);
+
+            finalDeviceList.forEach(obj => {
+                const dataList = document.createElement('div');
+                dataList.style.margin = '14px';
+                dataList.style.fontSize = '17px';
+
+                // Erstelle separate HTML-Elemente für jedes Detail
+                const nameElement = document.createElement('div');
+                nameElement.textContent = obj.Name;
+                dataList.appendChild(nameElement);
+
+                const raumElement = document.createElement('div');
+                raumElement.textContent = `Raum: ${obj.Raum}`;
+                dataList.appendChild(raumElement);
+
+                const sondenElement = document.createElement('div');
+                sondenElement.textContent = `Sonden: ${obj.Sonden.join(', ')}`;
+                dataList.appendChild(sondenElement);
+
+                listDiv.appendChild(dataList);
+            })
+
+
+
+
+
+
+        })
+        .catch(error => console.error());
+
+
+
+}
+
+function isDeepEqual(userFilter, compareTo) {
+
+    const sonden2 = compareTo.Sonden;
+
+    for (let i = 0; i < sonden2.length; i++) {
+        for (let j = 0; j < userFilter.length; j++) {
+
+
+
+            if(userFilter[j] === sonden2[i]){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function changeFilter(){
+    var checkbox = document.getElementById("available-checkbox");
+    let availableFilter;
+    if(checkbox.checked){
+        availableFilter = true;
+    }
+    else {
+        availableFilter = false;
+    }
+
+    const nameFilter = document.getElementById("textInput").value;
+
+    var checkboxes = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
+    var sondenFilter = [];
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            sondenFilter.push(checkbox.id);
+        }
+    });
+    console.log('Markierte Checkboxen:', sondenFilter);
+
+    displayDeviceList(availableFilter, nameFilter, sondenFilter);
+
+
+
+}
+
+
+
