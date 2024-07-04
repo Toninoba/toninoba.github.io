@@ -480,7 +480,7 @@ header nav ul li a:hover {
 .location-image {
   position: absolute;
   top: 200px;
-  left: 250px; 
+  left: 200px; 
   max-width: 70px;
   margin: 10px;
 }
