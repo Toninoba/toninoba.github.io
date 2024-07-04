@@ -58,7 +58,8 @@ function clickEvent(event) {
 function displayUSDeviceInfo(data) {
     clearBookingWindow();
     const textBox = document.getElementById("text-box");
-    const submit_button = document.createElement('button');
+	const submit_button = document.createElement('button');
+	const button_date_planning = document.createElement('button');
     let jsonContents = '';
 
     for (const key in data) {
@@ -71,6 +72,7 @@ function displayUSDeviceInfo(data) {
         }
     }
     console.log(jsonContents);
+		
 
     if (data.hasOwnProperty('available')) {
         if (data.available) {
@@ -81,17 +83,27 @@ function displayUSDeviceInfo(data) {
             submit_button.addEventListener('click', () => {
                 submit_button.classList.add('active');
                 displayBookingWindow();
-            })
+            })	
         } else {
             jsonContents += `Status: Nicht verfügbar\n`;
             submit_button.style.display = 'none';
             clearBookingWindow();
         }
     }
+	
+	button_date_planning.className = "submit-button";
+	button_date_planning.textContent = "Termin planen";
+	textBox.appendChild(button_date_planning);
+	button_date_planning.addEventListener('click', () => {
+		button_date_planning.classList.add('active');
+		window.location.href = "Availability.html";
+	});
+
     if(textBox){
-        console.log("Textbox existoert")
+        console.log("Textbox existiert")
         textBox.innerText = jsonContents;
         textBox.appendChild(submit_button);
+		 textBox.appendChild(button_date_planning);
     }
     else {
         console.error("Textbox weg")
