@@ -145,6 +145,12 @@ function searchRoom() {
         .catch(error => console.error(error));
 }
 
+document.getElementById('room-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        searchRoom();
+    }
+});
+
 function displayDeviceList(availableFilter, nameFilter, sondenFilter){
     const listDiv = document.getElementById("device-list");
     let finalDeviceList = [];

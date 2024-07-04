@@ -12,6 +12,25 @@ h2, h1, a, p {
     font-family: "Axios"; 
 }
 
+.header_line {
+	display: flex; 
+	align-items: center;
+    justify-content: space-between;
+}
+
+.header_text {
+    flex-grow: 1;
+    text-align: center;
+	font-family:"Axios";
+	font-size: 30px; 
+	font-weight: 900;
+}
+
+.header_profile img {
+    max-width: 50px;
+}
+
+
 header nav ul {
 	list-style-type: none;
 	margin: 0;
@@ -58,10 +77,6 @@ header nav ul li a:hover {
     display: flex;
     flex-direction: column;
 }
-
-
-
-
 
 .left-container h2, .right-container h2 {
 	margin: 0;	
