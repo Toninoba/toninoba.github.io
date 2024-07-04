@@ -7,11 +7,36 @@ circles.forEach(function (circle) {
 })
 
 document.querySelector('.arrow-buttons .up').addEventListener('click', function() {
-    document.getElementById('siloahImage').src = 'Siloah2.png'; // Change the image source to Siloah2.png
+    document.getElementById('siloahImage').src = 'Siloah2.png';
+	document.getElementById('location-pin').style.display = 'none';
+	
+	const positions = {
+	'GE LOGIQ 7': { top: '680px', left: '550px' },
+	'Philips EPIQ CVx': { top: '500px', left: '200px' },
+	'GE Venue': { top: '350px', left: '600px' }
+    };
+
+    for (let id in positions) {
+        const circle = document.getElementById(id);
+        circle.style.top = positions[id].top;
+        circle.style.left = positions[id].left;
+    }
+
+	
 });
 
 document.querySelector('.arrow-buttons .down').addEventListener('click', function() {
-    document.getElementById('siloahImage').src = 'Siloah.jpg'; // Change the image source back to Siloah.jpg
+    document.getElementById('siloahImage').src = 'Siloah.jpg';
+	document.getElementById('location-pin').style.display = 'block';
+	
+	const circleIds = ['GE LOGIQ 7', 'Philips EPIQ CVx', 'GE Venue'];
+
+    circleIds.forEach(id => {
+        const circle = document.getElementById(id);
+        circle.style.top = ''; // Remove inline style for top
+        circle.style.left = ''; // Remove inline style for left
+    });
+	
 });
 
 // Get all checkboxes
