@@ -517,8 +517,13 @@ header nav ul li a:hover {
     top: 370px;
 }
 
+#GE\ Voluson\ P8{
+	left: 630px;
+    top: 800px;
+}
+
 .text-box {
-    height: 400px;
+    height: 320px;
     width: 100%;
 	margin-top: 0px;
     background-color: white;

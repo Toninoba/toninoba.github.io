@@ -13,13 +13,19 @@ document.querySelector('.arrow-buttons .up').addEventListener('click', function(
 	const positions = {
 	'GE LOGIQ 7': { top: '680px', left: '550px' },
 	'Philips EPIQ CVx': { top: '500px', left: '200px' },
-	'GE Venue': { top: '350px', left: '600px' }
-    };
+	'GE Venue': { top: '350px', left: '600px' },
+	'GE Voluson P8': { top: '100px', left: '100px'}};
 
     for (let id in positions) {
         const circle = document.getElementById(id);
         circle.style.top = positions[id].top;
         circle.style.left = positions[id].left;
+    }
+	
+	// Make GE Voluson P8 invisible
+    const volusonP8 = document.getElementById('GE Voluson P8');
+    if (volusonP8) {
+        volusonP8.style.display = 'none';
     }
 
 	
@@ -29,13 +35,19 @@ document.querySelector('.arrow-buttons .down').addEventListener('click', functio
     document.getElementById('siloahImage').src = 'Siloah.jpg';
 	document.getElementById('location-pin').style.display = 'block';
 	
-	const circleIds = ['GE LOGIQ 7', 'Philips EPIQ CVx', 'GE Venue'];
+	const circleIds = ['GE LOGIQ 7', 'Philips EPIQ CVx', 'GE Venue','GE Voluson P8'];
 
     circleIds.forEach(id => {
         const circle = document.getElementById(id);
         circle.style.top = ''; // Remove inline style for top
         circle.style.left = ''; // Remove inline style for left
     });
+	
+	// Make GE Voluson P8 visible again
+    const volusonP8 = document.getElementById('GE Voluson P8');
+    if (volusonP8) {
+        volusonP8.style.display = 'block';
+    }
 	
 });
 
@@ -113,7 +125,7 @@ function displayUSDeviceInfo(data) {
     console.log(jsonContents);
 	
 	button_date_planning.className = "submit-button";
-	button_date_planning.textContent = "Termin planen";
+	button_date_planning.textContent = "Termin buchen";
 	button_date_planning.addEventListener('click', () => {
 		button_date_planning.classList.add('active');
 		window.location.href = "Availability.html";
