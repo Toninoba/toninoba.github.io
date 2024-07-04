@@ -14,7 +14,7 @@ document.querySelector('.arrow-buttons .up').addEventListener('click', function(
 	'GE LOGIQ 7': { top: '680px', left: '550px' },
 	'Philips EPIQ CVx': { top: '500px', left: '200px' },
 	'GE Venue': { top: '350px', left: '600px' },
-	'GE Voluson P8': { top: '100px', left: '100px'}};
+	'GE Voluson P8': { top: '10000px', left: '0px'}};
 
     for (let id in positions) {
         const circle = document.getElementById(id);
