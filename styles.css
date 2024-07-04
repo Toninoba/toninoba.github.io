@@ -420,6 +420,24 @@ header nav ul li a:hover {
 	margin-top: 50px;
 }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.siloah-image {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+}
+
+.location-image {
+  position: absolute;
+  top: 200px;
+  left: 250px; 
+  max-width: 70px;
+  margin: 10px;
+}
 
 .circle{
     border-radius: 50%;
