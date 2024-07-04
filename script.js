@@ -51,6 +51,7 @@ document.querySelector('.arrow-buttons .down').addEventListener('click', functio
 	
 });
 
+
 // Get all checkboxes
 const checkboxes = document.querySelectorAll('#text-box input[type="checkbox"]');
 
@@ -213,11 +214,7 @@ function searchRoom() {
         .catch(error => console.error(error));
 }
 
-document.getElementById('room-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        searchRoom();
-    }
-});
+
 
 async function displayDeviceList_new(availableFilter, nameFilter, sondenFilter) {
     const listDiv = document.getElementById("device-list");
