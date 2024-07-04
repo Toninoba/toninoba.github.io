@@ -6,12 +6,20 @@ circles.forEach(function (circle) {
     checkAvailable(circle);
 })
 
-document.addEventListener("DOMContentLoaded", function () {
-    checkAvailable();
-    displayDeviceList(false, "", []);
+
+// Get all checkboxes
+const checkboxes = document.querySelectorAll('#text-box input[type="checkbox"]');
+
+// Add event listeners to all checkboxes
+checkboxes.forEach(checkbox => {
+	checkbox.addEventListener('change', changeFilter);
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+	checkAvailable();
+	displayDeviceList_new(false, "", []);
+});
 
 function checkAvailable() {
     fetch(deviceFilePath)
@@ -35,7 +43,6 @@ function checkAvailable() {
         .catch(error => console.error('Error:', error));
 
 }
-
 
 function clickEvent(event) {
     let us_device;
@@ -72,28 +79,9 @@ function displayUSDeviceInfo(data) {
         }
     }
     console.log(jsonContents);
-		
-
-    if (data.hasOwnProperty('available')) {
-        if (data.available) {
-            jsonContents += `Status: Verfügbar\n`;
-            submit_button.className = "submit-button";
-            submit_button.textContent = "Gerät belegen";
-            textBox.appendChild(submit_button);
-            submit_button.addEventListener('click', () => {
-                submit_button.classList.add('active');
-                displayBookingWindow();
-            })	
-        } else {
-            jsonContents += `Status: Nicht verfügbar\n`;
-            submit_button.style.display = 'none';
-            clearBookingWindow();
-        }
-    }
 	
 	button_date_planning.className = "submit-button";
 	button_date_planning.textContent = "Termin planen";
-	textBox.appendChild(button_date_planning);
 	button_date_planning.addEventListener('click', () => {
 		button_date_planning.classList.add('active');
 		window.location.href = "Availability.html";
@@ -101,9 +89,46 @@ function displayUSDeviceInfo(data) {
 
     if(textBox){
         console.log("Textbox existiert")
-        textBox.innerText = jsonContents;
-        textBox.appendChild(submit_button);
-		 textBox.appendChild(button_date_planning);
+
+		// Clear previous appended content
+        const existingContentDiv = textBox.querySelector('.device-info');
+        existingSubmitButton = textBox.querySelector('.submit-button');
+
+        if (existingContentDiv) {
+            textBox.removeChild(existingContentDiv);
+        }
+
+		while (existingSubmitButton) {
+			textBox.removeChild(existingSubmitButton);
+			existingSubmitButton = textBox.querySelector('.submit-button')
+		}
+
+        // Append new content
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'device-info';
+        contentDiv.innerText = jsonContents;
+
+        textBox.appendChild(contentDiv);
+        // textBox.appendChild(submit_button);
+
+		if (data.hasOwnProperty('available')) {
+				if (data.available) {
+					jsonContents += `Status: Verfügbar\n`;
+					submit_button.className = "submit-button";
+					submit_button.textContent = "Gerät belegen";
+					textBox.appendChild(submit_button);
+					submit_button.addEventListener('click', () => {
+						submit_button.classList.add('active');
+						displayBookingWindow();
+					})	
+				} else {
+					jsonContents += `Status: Nicht verfügbar\n`;
+					submit_button.style.display = 'none';
+					clearBookingWindow();
+				}
+			}
+
+        textBox.appendChild(button_date_planning);
     }
     else {
         console.error("Textbox weg")
@@ -122,7 +147,6 @@ function clearBookingWindow() {
     bookingWindow.textContent = ''; // Clear the content
     bookingWindow.style.display = 'none'; // Hide the booking window
 }
-
 
 function searchRoom() {
     const input = document.getElementById('room-input').value;
@@ -145,94 +169,87 @@ function searchRoom() {
         .catch(error => console.error(error));
 }
 
-function displayDeviceList(availableFilter, nameFilter, sondenFilter){
+async function displayDeviceList_new(availableFilter, nameFilter, sondenFilter) {
     const listDiv = document.getElementById("device-list");
-    let finalDeviceList = [];
-    listDiv.innerHTML = '';
+	const textBox = document.getElementById("text-box");
 
+    try {
+        const response = await fetch(deviceFilePath);
+        const data = await response.json();
 
-    fetch(deviceFilePath)
-        .then(response => response.json())
-        .then(data => {
-            let availableDevices;
-            if(availableFilter){
-                availableDevices = data.filter(device => device.available);
-            }
-            else {
-                availableDevices = data;
-            }
-            if(nameFilter !== ""){
-                availableDevices = availableDevices.filter(device => device.Name === nameFilter);
-            }
+						// 1. Filter devices based on availability
+		let availableDevices = data.filter(device => {
+			// Check if availableFilter is set and the device is available
+			return !availableFilter || device.available;
+		});
 
-            if(sondenFilter.length !== 0){
+		// 2. Filter devices based on nameFilter
+		let nameFilteredDevices = availableDevices.filter(device => {
+			// If nameFilter is empty, include all devices
+			// Otherwise, include only devices whose Name is in the nameFilter array
+			return nameFilter.length === 0 || nameFilter.includes(device.Name);
+		});
 
+		// Step 3: Filter by sonde
+		let finalDeviceList = nameFilteredDevices.filter(device => {
+			// If sondenFilter is empty, include all devices
+			// Otherwise, include only devices whose Sonden array includes at least one value from the sondenFilter array
+			return sondenFilter.length === 0 || sondenFilter.some(sonde => device.Sonden.includes(sonde));
+		});
 
-                for (let i = 0; i < availableDevices.length; i++) {
-                    const currentDevice = availableDevices[i];
+        console.log(finalDeviceList);
 
-                    if(isDeepEqual(sondenFilter, currentDevice)){
-                        finalDeviceList.push(currentDevice);
-                    }
+        // Create a Map for quick lookup
+        const deviceMap = new Map(finalDeviceList.map(device => [device.Name, device]));
 
+        // Get all the circles and update their display
+        document.querySelectorAll('.circle').forEach(circle => {
+            const isVisible = deviceMap.has(circle.id);
+            circle.style.display = isVisible ? 'block' : 'none';
+        });
 
-                }
-
-            }
-            else {
-                finalDeviceList = availableDevices;
-            }
-            console.log(finalDeviceList);
-
-            finalDeviceList.forEach(obj => {
-                const dataList = document.createElement('div');
-                dataList.style.margin = '14px';
-                dataList.style.fontSize = '17px';
-
-                // Erstelle separate HTML-Elemente für jedes Detail
-                const nameElement = document.createElement('div');
-                nameElement.textContent = obj.Name;
-                dataList.appendChild(nameElement);
-
-                const raumElement = document.createElement('div');
-                raumElement.textContent = `Raum: ${obj.Raum}`;
-                dataList.appendChild(raumElement);
-
-                const sondenElement = document.createElement('div');
-                sondenElement.textContent = `Sonden: ${obj.Sonden.join(', ')}`;
-                dataList.appendChild(sondenElement);
-
-                listDiv.appendChild(dataList);
-            })
-
-
-
-
-
-
-        })
-        .catch(error => console.error());
-
-
-
-}
-
-function isDeepEqual(userFilter, compareTo) {
-
-    const sonden2 = compareTo.Sonden;
-
-    for (let i = 0; i < sonden2.length; i++) {
-        for (let j = 0; j < userFilter.length; j++) {
-
-
-
-            if(userFilter[j] === sonden2[i]){
-                return true;
-            }
-        }
+    } catch (error) {
+        console.error(error);
     }
-    return false;
+	
+	if(textBox){
+        console.log("Textbox existiert")
+
+		// Clear previous appended content
+        const existingContentDiv = textBox.querySelector('.device-info');
+        existingSubmitButton = textBox.querySelector('.submit-button');
+
+        if (existingContentDiv) {
+            textBox.removeChild(existingContentDiv);
+        }
+
+		while (existingSubmitButton) {
+			textBox.removeChild(existingSubmitButton);
+			existingSubmitButton = textBox.querySelector('.submit-button')
+	}}
 }
+
+// function isDeepEqual(userFilter, compareTo) {
+
+    // const sonden2 = compareTo.Sonden;
+
+    // for (let i = 0; i < sonden2.length; i++) {
+        // for (let j = 0; j < userFilter.length; j++) {
+
+
+
+            // if(userFilter[j] === sonden2[i]){
+                // return true;
+            // }
+        // }
+    // }
+    // return false;
+// }
+
+function isDeepEqual(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
 
 function changeFilter(){
     var checkbox = document.getElementById("available-checkbox");
@@ -244,21 +261,51 @@ function changeFilter(){
         availableFilter = false;
     }
 
-    const nameFilter = document.getElementById("textInput").value;
+    // const nameFilter = document.getElementById("textInput").value;
 
-    var checkboxes = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
+    // var checkboxes = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
+    // var sondenFilter = [];
+    // sondenDropdownContent.forEach(function(checkbox) {
+        // if (checkbox.checked) {
+            // sondenFilter.push(checkbox.id);
+        // }
+    // });
+	// Get the Sonden and Gerätename dropdown content elements
+	
+	
+	var sondenDropdownContent = document.querySelector('.dropdown:nth-of-type(2) .dropdown-content');
+	var geraetenameDropdownContent = document.querySelector('.dropdown:nth-of-type(3) .dropdown-content');
+
+	// Get all checkboxes for Sonden and Gerätename
+	var sondenCheckboxes = sondenDropdownContent.querySelectorAll('input[type="checkbox"]');
+	var geraetenameCheckboxes = geraetenameDropdownContent.querySelectorAll('input[type="checkbox"]');
+
     var sondenFilter = [];
-    checkboxes.forEach(function(checkbox) {
-        if (checkbox.checked) {
-            sondenFilter.push(checkbox.id);
-        }
-    });
-    console.log('Markierte Checkboxen:', sondenFilter);
+	sondenCheckboxes.forEach(checkbox => {
+		if (checkbox.checked) {
+			sondenFilter.push(checkbox.id);
+		}
+		// checkbox.addEventListener('change', () => {
+			// console.log(`Sonden checkbox ${checkbox.id} is ${checkbox.checked ? 'checked' : 'unchecked'}`);
+		// });
+	});
+    var nameFilter = [];
+	geraetenameCheckboxes.forEach(checkbox => {
+		if (checkbox.checked) {
+            nameFilter.push(checkbox.id);
+		}
+		// checkbox.addEventListener('change', () => {
+			// console.log(`Gerätename checkbox ${checkbox.id} is ${checkbox.checked ? 'checked' : 'unchecked'}`);
+		// });
+	});
+	
+	
+	
 
-    displayDeviceList(availableFilter, nameFilter, sondenFilter);
-
-
-
+	
+    console.log('Markierte sondenCheckboxes:', sondenFilter);
+	console.log('Markierte geraetenameCheckboxes:', nameFilter);
+	displayDeviceList_new(availableFilter, nameFilter, sondenFilter);
 }
 
 
