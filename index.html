@@ -8,11 +8,14 @@
 </head>
 <body>
     <header>
-        <div style="text-align: center;"><h1>Navigationsplattform</h1></div>
+        <div class="header_line">
+            <div class="header_text">Navigationsplattform</div>
+            <div class="header_profile"><img src="Profile_icon.svg"></div>
+            </div>
         <nav>
             <ul>
 				<li><a href="index.html">Homepage</a></li>
-                <li><a href="Availability.html">Verfügbarkeit prüfen</a></li>
+                <li><a href="Availability.html">Termin buchen</a></li>
                 <li><a href="Room.html">Geräte nach Raum suchen</a></li>
             </ul>
         </nav>
@@ -23,12 +26,14 @@
 	
 	<div class="header-content">
         <div class="left-container">
-            <!-- <h2>Klinikumplan</h2> -->			
 			<div class="arrow-buttons">
                 <button class="up"></button>
                 <button class="down"></button>
             </div>
-            <img src="Siloah.jpg" alt="Siloah Logo" style="max-width:700px;"> <!-- Füge dieses Bild ein -->
+            <div class="image-container">
+                <img src="Siloah.jpg" alt="Siloah Logo" class="siloah-image">
+                <img src="location.svg" class="location-image">
+            </div>
             <div id="GE LOGIQ 7" class="circle"></div>
             <div id="Philips EPIQ CVx" class="circle"></div>
             <div id="GE Venue" class="circle"></div>

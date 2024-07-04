@@ -169,6 +169,12 @@ function searchRoom() {
         .catch(error => console.error(error));
 }
 
+document.getElementById('room-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        searchRoom();
+    }
+});
+
 async function displayDeviceList_new(availableFilter, nameFilter, sondenFilter) {
     const listDiv = document.getElementById("device-list");
 	const textBox = document.getElementById("text-box");
