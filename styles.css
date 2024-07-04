@@ -427,6 +427,45 @@ header nav ul li a:hover {
 	margin-top: 50px;
 }
 
+.left-container {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+}
+
+.arrow-buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	margin-right: 30px; /* Increase space between the buttons and the image */
+}
+
+.arrow-buttons button {
+	background-color: #ddd;
+	border: none;
+	padding: 20px; /* Larger padding for bigger buttons */
+	cursor: pointer;
+	margin: 10px 0; /* Space between buttons */
+	border-radius: 10px; /* Rounded corners */
+	width: 60px; /* Fixed width */
+	height: 60px; /* Fixed height */
+	background-size: 32px 32px; /* Size of the arrow icons */
+	background-repeat: no-repeat;
+	background-position: center; /* Center the arrow icon */
+}
+
+.arrow-buttons .up {
+	background-image: url('arrow_up.svg'); /* Local path to up arrow image */
+}
+
+.arrow-buttons .down {
+	background-image: url('arrow_down.svg'); /* Local path to down arrow image */
+}
+
+.arrow-buttons .up:hover, .arrow-buttons .down:hover {
+	background-color: #bbb; /* Background color on hover */
+}
+
 .image-container {
   position: relative;
   display: inline-block;
@@ -600,48 +639,4 @@ header nav ul li a:hover {
     margin-top: 20px;
 }
 
-.arrow-buttons {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	margin-right: 30px; /* Increase space between the buttons and the image */
-}
 
-.arrow-buttons button {
-	background-color: #ddd;
-	border: none;
-	padding: 20px; /* Larger padding for bigger buttons */
-	cursor: pointer;
-	margin: 10px 0; /* Space between buttons */
-	border-radius: 10px; /* Rounded corners */
-	width: 60px; /* Fixed width */
-	height: 60px; /* Fixed height */
-	background-size: 32px 32px; /* Size of the arrow icons */
-	background-repeat: no-repeat;
-	background-position: center; /* Center the arrow icon */
-}
-
-.arrow-buttons .up {
-	background-image: url('Up.png'); /* Local path to up arrow image */
-}
-
-.arrow-buttons .down {
-	background-image: url('Down.png'); /* Local path to down arrow image */
-}
-
-.arrow-buttons .up:hover, .arrow-buttons .down:hover {
-	background-color: #bbb; /* Background color on hover */
-}
-
-/* Optional: Center the arrow buttons with the image */
-.left-container {
-	display: flex;
-	align-items: center;
-}
-
-/* Ensure the image and buttons are aligned properly */
-.left-container img {
-	max-width: 700px;
-	height: auto; /* Maintain aspect ratio */
-}
