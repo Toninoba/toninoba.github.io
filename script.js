@@ -6,6 +6,13 @@ circles.forEach(function (circle) {
     checkAvailable(circle);
 })
 
+document.querySelector('.arrow-buttons .up').addEventListener('click', function() {
+    document.getElementById('siloahImage').src = 'Siloah2.png'; // Change the image source to Siloah2.png
+});
+
+document.querySelector('.arrow-buttons .down').addEventListener('click', function() {
+    document.getElementById('siloahImage').src = 'Siloah.jpg'; // Change the image source back to Siloah.jpg
+});
 
 // Get all checkboxes
 const checkboxes = document.querySelectorAll('#text-box input[type="checkbox"]');
